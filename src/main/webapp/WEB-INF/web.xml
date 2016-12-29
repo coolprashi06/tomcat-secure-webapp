@@ -7,12 +7,17 @@
 
     <context-param>
         <param-name>resteasy.servlet.mapping.prefix</param-name>
-        <param-value>/rest</param-value>
+        <param-value>/</param-value>
     </context-param>
 
     <context-param>
         <param-name>resteasy.scan</param-name>
         <param-value>true</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
 
 
@@ -58,6 +63,10 @@
         <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
     </listener>
 
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
 
     <servlet>
         <servlet-name>SecuredServlet</servlet-name>
@@ -71,15 +80,17 @@
     <servlet>
         <servlet-name>resteasy-servlet</servlet-name>
         <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+        <!--
         <init-param>
             <param-name>javax.ws.rs.Application</param-name>
             <param-value>com.prashast.FirstClass</param-value>
         </init-param>
+        -->
     </servlet>
 
     <servlet-mapping>
         <servlet-name>resteasy-servlet</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 
 
