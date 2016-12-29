@@ -7,7 +7,7 @@
     </script>
 </head>
 <body>
-<h2>Sample Web Application secured by LDAP Authentication</h2>
+<h2>J2EE Web Application secured by JDBC Realm</h2>
 
 <h3>Welcome :: </h3>
 <%=session.getAttribute("user")%>

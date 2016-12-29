@@ -8,13 +8,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.Principal;
 
-/**
- * Created by IntelliJ IDEA.
- * User: 342422
- * Date: 10/5/13
- * Time: 12:38 PM
- * To change this template use File | Settings | File Templates.
- */
+
 public class SampleServlet extends HttpServlet {
 
     @Override
