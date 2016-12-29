@@ -24,11 +24,13 @@ This application does following:
 ##### Configure JDBC Realm in Tomcat:
 In this case I added below Realm element under Catalina Engine tag as:
 
-```<Realm className="org.apache.catalina.realm.JDBCRealm"
+```
+<Realm className="org.apache.catalina.realm.JDBCRealm"
         		driverName="org.gjt.mm.mysql.Driver"
    				connectionURL="jdbc:mysql://localhost:3306/authority?user=prashast&amp;password=password&amp;useSSL=false"
        			userTable="users" userNameCol="user_name" userCredCol="user_pass"
    				userRoleTable="roles" roleNameCol="role_name"/>
+                
 ```
 
 More information can be found at: https://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html#JDBCRealm
