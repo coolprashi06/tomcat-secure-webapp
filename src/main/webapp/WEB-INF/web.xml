@@ -5,6 +5,15 @@
 <web-app>
   <display-name>Web Application authenticated via Tomcat JDBC Realm</display-name>
 
+    <context-param>
+        <param-name>resteasy.servlet.mapping.prefix</param-name>
+        <param-value>/rest</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>resteasy.scan</param-name>
+        <param-value>true</param-value>
+    </context-param>
 
 
     <security-constraint>
@@ -45,14 +54,33 @@
         <welcome-file>/index.jsp</welcome-file>
     </welcome-file-list>
 
+    <listener>
+        <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+    </listener>
+
 
     <servlet>
-        <servlet-name>SampleServlet</servlet-name>
-        <servlet-class>com.prashast.servlets.SampleServlet</servlet-class>
+        <servlet-name>SecuredServlet</servlet-name>
+        <servlet-class>com.prashast.servlets.SecuredServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SampleServlet</servlet-name>
-        <url-pattern>/sampleServ</url-pattern>
+        <servlet-name>SecuredServlet</servlet-name>
+        <url-pattern>/securedServ</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>resteasy-servlet</servlet-name>
+        <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>com.prashast.FirstClass</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>resteasy-servlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

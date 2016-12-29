@@ -8,3 +8,13 @@ This application demonstrates:
  3. how to retrieve principal/user object in the Servlet/rest resource.
 
 For more on how to configure JDBC Realm in Tomcat please click here: https://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html#JDBCRealm
+
+In this case I added below Realm element under Catalina Engine tag as:
+
+`<Realm className="org.apache.catalina.realm.JDBCRealm"
+        		driverName="org.gjt.mm.mysql.Driver"
+   				connectionURL="jdbc:mysql://localhost:3306/authority?user=prashast&amp;password=password&amp;useSSL=false"
+       			userTable="users" userNameCol="user_name" userCredCol="user_pass"
+   				userRoleTable="roles" roleNameCol="role_name"/>
+`
+
